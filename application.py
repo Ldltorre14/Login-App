@@ -1,6 +1,7 @@
 from customtkinter import *
 from customtkinter import CTkBaseClass
 from tkinter import *
+from tkinter import messagebox
 import tkinter.ttk as ttk
 from PIL import Image, ImageTk
 
@@ -16,6 +17,21 @@ class application(Tk):
         self.label()
         self.entry()
         self.button()
+    
+    def login(self):
+        #We store the user entry 
+        correctEmail = "lopdlt14@gmail.com"
+        correctPassword = "Haxorus12"
+        password = self.passwordEntry.get()
+        email = self.emailEntry.get()
+        
+        #We make the validations to see if the credentials are correct, wrong or missing
+        if password == correctPassword and email == correctEmail:
+            messagebox.showinfo("LOGIN","You Logged in Succesfully")
+        elif self.emailEntry.get() == "" or self.passwordEntry.get() == "":
+            messagebox.showwarning("LOGIN","Missing info")
+        else:
+            messagebox.showerror("LOGIN", "Credentials are incorrect")
     
     def label(self):
         #Background Image setting
@@ -80,7 +96,7 @@ class application(Tk):
                                      text="LOGIN",
                                      text_color="white",
                                      hover=True,
-                                     hover_color='black'
+                                     hover_color='black',
+                                     command=self.login
                                      )
         self.loginButton.place(x=135,y=350)
-        
