@@ -14,6 +14,8 @@ class application(Tk):
         self.resizable(False,False)
         self.configure(bg='#E9F9F6')
         self.label()
+        self.entry()
+        self.button()
     
     def label(self):
         #Background Image setting
@@ -32,20 +34,53 @@ class application(Tk):
                             )
         self.frm.place(x=260,y=80)
         
+        #Title Label
+        self.titleLabel = CTkLabel(self.frm,
+                                   text="Log In",
+                                   font=("Open Sans", 40),
+                                   )
+        self.titleLabel.place(x=145,y=50)
+        
         #Entry-data Label setting
-        self.userLabel = CTkLabel(self.frm,
-                                  text="Username", 
+        self.emailLabel = CTkLabel(self.frm,
+                                  text="Email", 
                                   font=("Open Sans", 16),
-                                  fg_color='white',
+                                  fg_color='#CFB5FF',
+                                  text_color='black',
                                   corner_radius=20) 
-        self.userLabel.place(x=60,y=180)
+        self.emailLabel.place(x=60,y=180)
         self.passwordLabel = CTkLabel(self.frm,
                                       text="Password",
                                       font=("Open Sans", 16),
-                                      fg_color='white',
+                                      fg_color='#CFB5FF',
+                                      text_color='black',
                                       corner_radius=20)
         self.passwordLabel.place(x=60,y=230)
         
         
+    def entry(self):
+        #entry setting
+        self.emailEntry = CTkEntry(self.frm,
+                                      height=20,
+                                      width=200,
+                                      placeholder_text="Email*",
+                                      placeholder_text_color='grey')
+        self.emailEntry.place(x=180,y=183)
         
+        self.passwordEntry = CTkEntry(self.frm,
+                                      height=20,
+                                      width=200,
+                                      placeholder_text="Password*",
+                                      placeholder_text_color='grey',
+                                      show='*')
+        self.passwordEntry.place(x=180,y=233)
+        
+    def button(self):
+        self.loginButton = CTkButton(self.frm,
+                                     text="LOGIN",
+                                     text_color="white",
+                                     hover=True,
+                                     hover_color='black'
+                                     )
+        self.loginButton.place(x=135,y=350)
         
